@@ -1,0 +1,16 @@
+.ion4-tabs-slide {
+    ion-segment {
+        justify-content: left !important;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+        ion-segment-button {
+            min-width: 90px;
+            color: #ffffff;
+            width: auto;
+        }
+    }
+}

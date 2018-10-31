@@ -1,0 +1,18 @@
+<ion-app>
+  <ion-menu side="start">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="openHomePage()">Home</ion-item>
+        <ion-item (click)="openTabsSlidePage()">Tabs slide</ion-item>
+        <ion-item (click)="openExpandableHeaderPage()">Expandable header</ion-item>
+        <ion-item (click)="openExpandableCustomHeaderPage()">Expandable custom header</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

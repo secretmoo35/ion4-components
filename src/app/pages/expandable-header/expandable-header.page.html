@@ -1,0 +1,32 @@
+<ion-header>
+  <app-ion4-expandable-header [scrollArea]="myContent">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Expandable Header
+      </ion-title>
+    </ion-toolbar>
+  </app-ion4-expandable-header>
+
+  <ion-toolbar>
+    <ion-searchbar mode="ios"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen #myContent [scrollEvents]="true">
+
+  <ion-card *ngFor="let test of [1,2,3,4,5,6]">
+    <ion-img src="https://beta.ionicframework.com/docs/content/component-preview-app/docs-www/assets/madison.jpg"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>DESTINATION</ion-card-subtitle>
+      <ion-card-title>Madison, WI</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the
+        Wisconsin Territory in 1836.</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

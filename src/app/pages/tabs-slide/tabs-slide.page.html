@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tabs slide</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-ion4-tabs-slide [headers]="tabs" [backgroundColor]="'#0cd1e8'" [color]="'#ffffff'" (slide)="onSlide($event)">
+    <ion-slide>
+      <h1>Tab 1</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Tab 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Tab 3</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Tab 4</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Tab 5</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Tab 6</h1>
+    </ion-slide>
+  </app-ion4-tabs-slide>
+</ion-content>
