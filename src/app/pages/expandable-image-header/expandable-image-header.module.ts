@@ -5,13 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ExpandableCustomHeaderPage } from './expandable-custom-header.page';
+import { ExpandableImageHeaderPage } from './expandable-image-header.page';
 import { ComponentsModule } from '../../components/components.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: ExpandableCustomHeaderPage
+    component: ExpandableImageHeaderPage
   }
 ];
 
@@ -23,6 +23,6 @@ const routes: Routes = [
     ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ExpandableCustomHeaderPage]
+  declarations: [ExpandableImageHeaderPage]
 })
-export class ExpandableCustomHeaderPageModule {}
+export class ExpandableImageHeaderPageModule { }

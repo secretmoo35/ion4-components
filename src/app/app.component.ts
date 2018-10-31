@@ -41,8 +41,8 @@ export class AppComponent {
     this.navCtrl.navigateRoot('/expandable-header');
   }
 
-  openExpandableCustomHeaderPage() {
+  openExpandableImageHeaderPage() {
     this.menuCtrl.close();
-    this.navCtrl.navigateRoot('/expandable-custom-header');
+    this.navCtrl.navigateRoot('/expandable-image-header');
   }
 }

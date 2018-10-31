@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExpandableCustomHeaderPage } from './expandable-custom-header.page';
+import { ExpandableImageHeaderPage } from './expandable-image-header.page';
 
-describe('ExpandableCustomHeaderPage', () => {
-  let component: ExpandableCustomHeaderPage;
-  let fixture: ComponentFixture<ExpandableCustomHeaderPage>;
+describe('ExpandableImageHeaderPage', () => {
+  let component: ExpandableImageHeaderPage;
+  let fixture: ComponentFixture<ExpandableImageHeaderPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExpandableCustomHeaderPage ],
+      declarations: [ ExpandableImageHeaderPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExpandableCustomHeaderPage);
+    fixture = TestBed.createComponent(ExpandableImageHeaderPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Ion4TabsSlideComponent } from './ion4-tabs-slide/ion4-tabs-slide.component';
 import { Ion4ExpandableHeaderComponent } from './ion4-expandable-header/ion4-expandable-header.component';
+import { Ion4ExpandableImageHeaderComponent } from './ion4-expandable-image-header/ion4-expandable-image-header.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,15 @@ import { Ion4ExpandableHeaderComponent } from './ion4-expandable-header/ion4-exp
     FormsModule,
     IonicModule.forRoot(),
   ],
-  declarations: [Ion4TabsSlideComponent, Ion4ExpandableHeaderComponent],
-  exports: [Ion4TabsSlideComponent, Ion4ExpandableHeaderComponent]
+  declarations: [
+    Ion4TabsSlideComponent,
+    Ion4ExpandableHeaderComponent,
+    Ion4ExpandableImageHeaderComponent
+  ],
+  exports: [
+    Ion4TabsSlideComponent,
+    Ion4ExpandableHeaderComponent,
+    Ion4ExpandableImageHeaderComponent
+  ]
 })
 export class ComponentsModule { }
