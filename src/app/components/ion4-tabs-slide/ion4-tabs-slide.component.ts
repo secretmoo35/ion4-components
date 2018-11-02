@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Slides } from '@ionic/angular';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-ion4-tabs-slide',
@@ -10,11 +11,17 @@ export class Ion4TabsSlideComponent implements AfterViewInit {
 
   @ViewChild('slider') slider: Slides;
   @ViewChild('segments', { read: ElementRef }) segments: ElementRef;
+  @Input() initPage: any;
+  @Input() keyPage: any;
   @Input() headers: Array<any> = [];
   @Input() backgroundColor: any;
   @Input() color: any;
   @Output() slide: EventEmitter<any> = new EventEmitter<any>();
   page: any = '0';
+  slideOptions: any = {
+    initialSlide: 0
+  };
+
   constructor() { }
 
   ngAfterViewInit() {
@@ -24,17 +31,29 @@ export class Ion4TabsSlideComponent implements AfterViewInit {
     if (!this.color) {
       this.color = '#4a4a4a';
     }
-    this.slideChanged();
+
+    this.initialPage();
+  }
+
+  initialPage() {
+    const index = this.headers.findIndex((header) => {
+      return header[this.keyPage].toString() === this.initPage.toString();
+    });
+    this.slideOptions = {
+      initialSlide: index
+    }
   }
 
   selectedTab(index) {
     this.slider.slideTo(index);
+    this.initPage = this.headers[index].name;
   }
 
   slideChanged() {
     this.slider.getActiveIndex().then((index) => {
       const slides_count = this.segments.nativeElement.childElementCount;
       this.page = index.toString();
+      this.initPage = this.headers[index].name;
       if (this.page >= slides_count) {
         this.page = (slides_count - 1).toString();
       }
