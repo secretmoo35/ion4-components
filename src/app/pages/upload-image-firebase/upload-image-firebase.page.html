@@ -8,4 +8,6 @@
   <app-ion4-upload-image-firebase (url)="onUrlCallback($event)">
     <ion-button color="primary"> Upload </ion-button>
   </app-ion4-upload-image-firebase>
+
+  <ion-img *ngIf="image" [src]="image" width="80"></ion-img>
 </ion-content>

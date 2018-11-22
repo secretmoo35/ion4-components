@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upload-image-firebase.page.scss'],
 })
 export class UploadImageFirebasePage implements OnInit {
-
+  image: string;
   constructor() { }
 
   ngOnInit() {
@@ -15,6 +15,7 @@ export class UploadImageFirebasePage implements OnInit {
   onUrlCallback(e) {
     console.log(e);
     alert(e);
+    this.image = e;
   }
 
 }

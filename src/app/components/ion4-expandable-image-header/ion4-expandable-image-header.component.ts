@@ -48,8 +48,10 @@ export class Ion4ExpandableImageHeaderComponent implements AfterViewInit {
     this._scrollPaddingTop = Number(thePaddingTopString.substring(0, thePaddingTopString.length - 2));
     this._ionToolbar = this.ionHeader.nativeElement.querySelector('ion-toolbar');
     this._ionHeaderTitle = this.ionHeader.nativeElement.querySelector('ion-title');
-    this.renderer.removeClass(this.ionHeader.nativeElement, 'header-md');
-    this.renderer.removeClass(this.ionHeader.nativeElement, 'header-ios');
+    setTimeout(() => {
+      this.renderer.removeClass(this.ionHeader.nativeElement, 'header-md');
+      this.renderer.removeClass(this.ionHeader.nativeElement, 'header-ios');
+    }, 0);
     // Subscribe to the scroll-event
     this.scrollArea.ionScroll.subscribe((event) => {
       this._setOpacityFactor(event.detail.scrollTop);

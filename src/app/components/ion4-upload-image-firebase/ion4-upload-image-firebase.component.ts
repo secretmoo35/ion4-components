@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ActionSheetController, Platform } from '@ionic/angular';
+import { ActionSheetController, Platform, LoadingController } from '@ionic/angular';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 
 @Component({
@@ -16,7 +17,9 @@ export class Ion4UploadImageFirebaseComponent implements OnInit {
   constructor(
     private actionSheetController: ActionSheetController,
     private imagePicker: ImagePicker,
-    private platform: Platform
+    private camera: Camera,
+    private platform: Platform,
+    private loading: LoadingController
   ) { }
 
   ngOnInit() {
@@ -54,12 +57,7 @@ export class Ion4UploadImageFirebaseComponent implements OnInit {
         results = [];
       }
       for (let i = 0; i < results.length; i++) {
-        let fileUri;
-        if (this.platform.is('android')) {
-          fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
-        } else {
-          fileUri = results[i];
-        }
+        const fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
         this.uploadImage(fileUri).then((uploadImageData) => {
           this.url.emit(uploadImageData);
         }, (uploadImageError) => {
@@ -73,14 +71,36 @@ export class Ion4UploadImageFirebaseComponent implements OnInit {
   }
 
   onCamera() {
-    alert('onCamera');
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 900
+    };
+
+    this.camera.getPicture(options).then((imageData) => {
+      const fileUri = (<any>window).Ionic.WebView.convertFileSrc(imageData);
+      this.uploadImage(fileUri).then((uploadImageData) => {
+        this.url.emit(uploadImageData);
+      }, (uploadImageError) => {
+        console.log(uploadImageError);
+        alert('Upload image err: ' + JSON.stringify(uploadImageError));
+      });
+    }, (err) => {
+      alert(err);
+    });
   }
 
-  uploadImage(imageString): Promise<any> {
+  async uploadImage(imageString): Promise<any> {
+
+    const loading = await this.loading.create({
+      translucent: true,
+    });
+    await loading.present();
 
     return new Promise((resolve, reject) => {
 
-      // this.loading.onLoading();
       const storageRef = firebase.storage().ref();
       const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
       const imageRef = storageRef.child(`images/${filename}.png`);
@@ -109,11 +129,13 @@ export class Ion4UploadImageFirebaseComponent implements OnInit {
         },
           (_err) => {
             reject(_err);
-            // this.loading.dismiss();
+            this.loading.dismiss();
           },
           (success) => {
-            resolve(uploadTask.snapshot.downloadURL);
-            // this.loading.dismiss();
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+              resolve(downloadURL);
+            });
+            this.loading.dismiss();
           });
 
       };
