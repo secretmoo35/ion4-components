@@ -14,8 +14,8 @@ export class Ion4TabsSlideComponent implements AfterViewInit {
   @Input() initPage: any;
   @Input() keyPage: any;
   @Input() headers: Array<any> = [];
-  @Input() backgroundColor: any;
-  @Input() color: any;
+  @Input() backgroundColor: any = '#efefef';
+  @Input() color: any = '#4a4a4a';
   @Output() slide: EventEmitter<any> = new EventEmitter<any>();
   page: any = '0';
   slideOptions: any = {
@@ -41,7 +41,7 @@ export class Ion4TabsSlideComponent implements AfterViewInit {
     });
     this.slideOptions = {
       initialSlide: index
-    }
+    };
   }
 
   selectedTab(index) {

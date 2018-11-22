@@ -23,6 +23,7 @@ const routes: Routes = [
     path: 'expandable-image-header',
     loadChildren: './pages/expandable-image-header/expandable-image-header.module#ExpandableImageHeaderPageModule'
   },
+  { path: 'upload-image-firebase', loadChildren: './pages/upload-image-firebase/upload-image-firebase.module#UploadImageFirebasePageModule' },
 ];
 
 @NgModule({

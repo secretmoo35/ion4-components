@@ -2,7 +2,7 @@
   <ion-segment #segments mode="md" [(ngModel)]="initPage" [style.background-color]="backgroundColor">
     <ion-segment-button [style.color]="color" class="segment-button" *ngFor="let item of headers; let i =index;"
       [value]="keyPage ? item[keyPage] : i" (click)="selectedTab(i)">
-      {{ item?.name }}
+      <ion-label> {{ item?.name }} </ion-label>
     </ion-segment-button>
   </ion-segment>
   <ion-slides #slider [options]="slideOptions" (ionSlideDidChange)="slideChanged()">
