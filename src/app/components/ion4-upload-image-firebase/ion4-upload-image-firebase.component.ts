@@ -22,7 +22,7 @@ export class Ion4UploadImageFirebaseComponent implements OnInit {
   ngOnInit() {
   }
 
-  async open() {
+  async openAction() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Select image file',
       buttons: [{
